@@ -1,0 +1,72 @@
+COMP558
+Assignment1
+Common mistakes
+Grader: Florian Shkurti 
+
+Q1:
+The most common mistake in this question was that instead of projecting
+3D scene points on the plane Z=f like this: 
+
+[x_pixel, y_pixel, 1] = K * [X Y Z]'
+
+in some submissions people were trying to reverse the axes of the pixel
+sensor plane, so that a positive displacement in the 3D axes corresponded
+to a positive displacement on the sensor plane axis. Doing this is not 
+necessary because it is expected that the 3D scene will be reversed when 
+being projected onto the sensor plane. To avoid thinking about this inversion
+you can think of the sensor plane as being placed in front of the origin of 
+the camera.  
+ 
+Q2: 
+While there were several problems in the solutions of this question, there
+didn't exist a theme among all the mistakes, and the question was in general
+well-done. 
+
+One point worth mentioning is that some students mentioned that they were
+getting different signs for tilt depending on the choice of points on the image. 
+This might have to do with the fact that atan() has range [-pi/2, pi/2]
+while acos() has range [0, pi]. Also be aware of the existence of atan2()
+in which you can basically decide the quadrant you want the resulting angle
+to be in.  
+
+Q3: 
+One of the common issues in this question was that when reporting Z0=D/C
+as a length you need to make sure that it is positive, which many people
+didn't worry about.
+
+Another issue was that many submissions used fsolve() or fzero(), which are
+useful when trying to find minima of nonlinear functions, or roots of nonlinear
+equations. These functions are in general sensitive to their initial conditions,
+and it doesn't make sense to use them when you can derive the formula for the
+solution of the system by hand, although it is cool that people were aware of 
+their existence. 
+
+Q4: 
+The most common mistake here was that instead of projecting 3D points 
+on the plane Z=Zsensor, most submissions projected them on Z=f. Zsensor
+and f are in general very close so the results at the end would be almost the 
+same. So, instead of using
+
+K = [f*mx    0     px;
+      0     f*my   py;
+      0      0     1]
+
+a technically more correct thing to do would be
+
+K = [Zsensor*mx    0         px;
+      0         Zsensor*my   py;
+      0            0         1]
+
+Keep in mind that both the pinhole and the thin lens model, are simply approximations
+of how cameras work, and not perfect models. The second K is a better approximation than 
+the first K. 
+
+Another point worth mentioning is that, since the exercise said "assume a thin lens model,"
+some submissions used the following projection equations: 
+
+(Xi, Yi, Zi) = (f*X0/(Z0 - f), f*Y0/(Z0 - f), f*Z0/(Z0-f))
+
+This is not correct because this equation projects a 3D point (X0, Y0, Z0) to the plane Zi
+where the conjugate point would have zero blur. This plane Zi might or might not be the sensor 
+plane.  
+ 

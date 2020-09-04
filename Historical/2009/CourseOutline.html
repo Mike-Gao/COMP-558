@@ -1,0 +1,518 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>COMP 558 Course Outline
+Fall 2009</title>
+</head>
+<body>
+<div style="text-align: center;"><big><big style="font-weight: bold;">Course
+Outline</big><br>
+<big style="font-weight: bold;">Fundamentals
+of Computer Vision &nbsp; &nbsp;
+&nbsp;COMP 558</big><big><br>
+<span style="font-weight: bold;">
+Fall 2009</span></big></big><br>
+</div>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br>
+<table style="text-align: left; width: 100%;" border="0" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td>Instructor:&nbsp;&nbsp;&nbsp;
+Professor Michael Langer<br>
+Office:&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+McConnell Engineering, rm. 329<br>
+Tel:&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;514-398-3740<br>
+Email:&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; langer@cim.mcgill.ca<br>
+Office Hours: &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp; by appointment (send me email)</td>
+      <td style="vertical-align: top;">Teaching
+Assistant (T.A.) &nbsp; Fahim Mannan<br>
+Office:&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; ENGMC 337<br>
+Telephone:<br>
+Email:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp; fmannan [at] cim.mcgill.ca<br>
+Office Hours: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; by appointment
+(send him email)</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<big><span style="font-weight: bold;">Overview</span></big><br>
+<p>Computer vision involves the development of algorithms and software
+that have the potential to mimic a biological organism's ability to
+``see''. Though the sense of vision is immediate for most people, the
+complexity of the task that the human visual system accomplishes is in
+fact enormous.  The field of computer vision has grown steadily over
+the past few decades, and has advanced to the point where a set of
+core algorithms and techniques now exist for solving specific vision
+problems in constrained settings.  Several international research
+laboratories now exist and applications of computer vision techniques
+in industry, robotics, and bio-medicine abound. This course seeks to
+present the fundamentals of computer vision at an advanced
+undergraduate/beginning graduate level.  &nbsp; Students will become
+familiar with the basic theoretical and practical tools of computer
+vision, which would be needed to carry out research or to
+find employment in this field.
+</p>
+<big style="font-weight: bold;">Course Contents<br>
+<br>
+</big>The course in Fall 2009 consists
+of three parts.  Lectures will cover most of the specific
+topics below.<br>
+<br>
+Part 1:&nbsp;&nbsp; Image Formation<br>
+<ul>
+  <li>image projection with a
+pinhole camera</li>
+  <li>motion field seen by a
+moving observer&nbsp; (translation and rotation)</li>
+  <li>camera model&nbsp;
+(homogeneous coordinates, extrinsic and intrinsic parameters) </li>
+  <li>thin lens model&nbsp;
+(aperture, f-stop, blur, depth of field)</li>
+  <li>lighting and
+reflectance&nbsp; (light and shade, specularities, radiance, BRDF)</li>
+  <li>image
+capture&nbsp; (color, RGB, image irradiance, exposure, dynamic
+range, noise, sampling)</li>
+</ul>
+Part 2:&nbsp; Image Analysis&nbsp;<br>
+<ul>
+  <li>basic linear
+systems (convolution, filtering, noise, derivatives, smoothing)</li>
+  <li>edge detection
+(Canny),&nbsp; corner detection (2nd moment matrix, Harris vs.
+Laplacian) </li>
+  <li>features and affine invariance (SIFT) </li>
+  <li>motion estimation (aperture problem, Kanade-Lucas-Tomasi, Horn &
+  Schunk) </li>
+<li> linear algebra tools (matrix decompositions, QR, SVD)</li>
+  <li>least squares minimization (pseudoinverse, non-linear methods) </li>
+  <li>line fitting (least squares, Hough transform,&nbsp; RANSAC)</li>
+<li> finding a vanishing point </li>
+</ul>
+Part 3:&nbsp;&nbsp; 3D Vision<br>
+<ul>
+  <li>shape from shading (sunny vs. cloudy days) </li>
+  <li>shape from texture, defocus&nbsp;</li>
+  <li>geometric camera calibration</li>
+  <li>homographies and planar rectification&nbsp;</li>
+  <li>egomotion (Rieger Lawton)</li>
+<li>affine structure (factorization, Basri-Ullman, bas relief ambiguity) </li>
+  <li>epipolar geometry, estimating the fundamental matrix</li>
+<li> dense stereo correspondence (dynamic programming, graph cuts)
+</ul>
+
+<big style="font-weight: bold;"><br>
+Official Course Description from McGill Calendar<br>
+<br>
+</big>
+Biological vision, edge
+detection, projective geometry and camera
+modeling, shape from shading and texture, stereo vision, optical flow,
+motion analysis, object representation, object recognition, graph
+theoretic methods, high level vision, applications.<br>
+<br>
+ <i> Note: this description applies to previous version of the
+  course taught by Prof. Kaleem Siddiqi.  While there is a large
+  overlap between these topics and those covered this year, there are
+  significant differences as well.   This year, in particular, we will
+  not be covering object recognition, differential geometry of
+  surfaces.   These topics will be covered in Prof. Siddiqi's 7xx course 
+  offered in the Winter 2010.
+</i>
+
+<br><br>
+<big style="font-weight: bold;">Prerequisites</big><br>
+<br>
+Students should have a solid&nbsp;background in basic Calculus,
+Linear Algebra, Algorithms and Data structures, and 
+Programming. &nbsp; &nbsp;The official prerequisites for the
+course are &nbsp;<a
+ href="http://www.mcgill.ca/global/php/coursepopup.php?Course=COMP%20206&amp;Year=2009-2010%27"
+ onclick="window.open('http://www.mcgill.ca/global/php/coursepopup.php?Course=COMP%20206&Year=2009-2010', 'Course Info', 'width=500, height=400'); return false;">COMP
+206</a> ,&nbsp;<a
+ href="http://www.mcgill.ca/global/php/coursepopup.php?Course=COMP%20360&amp;Year=2009-2010%27"
+ onclick="window.open('http://www.mcgill.ca/global/php/coursepopup.php?Course=COMP%20360&Year=2009-2010', 'Course Info', 'width=500, height=400'); return false;">COMP
+360</a>,&nbsp;<a
+ href="http://www.mcgill.ca/global/php/coursepopup.php?Course=MATH%20222&amp;Year=2009-2010%27"
+ onclick="window.open('http://www.mcgill.ca/global/php/coursepopup.php?Course=MATH%20222&Year=2009-2010', 'Course Info', 'width=500, height=400'); return false;">MATH
+222,</a><span style="text-decoration: underline;">&nbsp;</span>
+<a
+ href="http://www.mcgill.ca/global/php/coursepopup.php?Course=MATH%20223&amp;Year=2009-2010%27"
+ onclick="window.open('http://www.mcgill.ca/global/php/coursepopup.php?Course=MATH%20223&Year=2009-2010', 'Course Info', 'width=500, height=400'); return false;">MATH
+223</a> (or equivalent).
+
+It is strongly recommended that <i> students only take this
+course if they received A grades in MATH 222 and 223 (or equivalent).</i>
+<br>
+ <br>Students who do
+not have these prerequisites may still be allowed to take the course,
+ but only  with the
+permission of the instructor. &nbsp; <br>
+&nbsp;<br>
+<big style="font-weight: bold;">Lecture
+Notes, Readings, Textbooks</big><br>
+<br>
+The material covered in the lectures will be available in the form of
+Lecture Notes written by the
+instructor and posted as PDFs
+on the course web page, or as handouts.&nbsp; Readings also will be made available
+typically in electronic form.&nbsp;&nbsp; <br>
+<br>
+There is no required textbook for the course.  There are, however,
+several good texts out there and students are encouraged to consult
+with them. &nbsp;These textbooks are available on reserve in the <a
+ href="http://www.mcgill.ca/schulich/">Schulich
+Science and Engineering library.</a>
+<menu><li>''Introductory
+Techniques for
+3D Computer Vision'', by Emanuele Trucco and Alessandro Verri,
+Prentice-Hall, 1998. &nbsp;&nbsp;
+</li>
+<li> ``Three-Dimensional Computer
+Vision: A Geometric Viewpoint'', by Olivier Faugeras, MIT Press, 1996.
+&nbsp;<b><font color="red"> </font></b>
+</li>
+<li> ``Robot Vision'', by Berthold
+Horn, MIT Press/McGraw-Hill, 1986.&nbsp;<b><font color="red"> </font></b>
+</li>
+<li> ``A Guided Tour of Computer
+Vision'', by V. Nalwa, Addison-Wesley, 1993.<b><font color="red"> </font></b>
+</li>
+<li> ``Computer Vision: A Modern
+Approach'', by David Forsyth and Jean Ponce, 2003.&nbsp;</li>
+</menu>
+<menu></menu>
+<big><span style="font-weight: bold;">Evaluation</span></big><br>
+<br>
+B.Sc. students must achieve a grade of 55 (C) to pass this course.
+&nbsp;
+M.Sc. and Ph.D. students must achieve a grade of 65 (B-). 
+<br>There are three components to the grade (total 100%):<br>
+<ul>
+  <li>Three assignments (40 %)</li>
+  <li>Midterm exam&nbsp; (15 %)</li>
+  <li>Final Exam&nbsp; (30 %)</li>
+  <li>Term Paper (15 %)</li>
+</ul>
+A description of each of the three components is as follows:<br>
+<ul>
+  <li><span style="font-weight: bold;">Assignments
+(40 %)</span></li>
+  <ul>
+    <li>There will be three
+assignments, of roughly equal weight.</li>
+    <li>The assignments will
+involve taking digital photographs, writing MATLAB programs to analyze
+them, and answering questions related
+to the lecture material.&nbsp; Students are&nbsp;not
+required to know about digital photography or MATLAB prior
+to the course. &nbsp;The principles of digital photography will be
+covered in class. &nbsp;Examples of starter MATLAB code will be
+given, and
+students will asked
+to extend these examples.&nbsp;&nbsp;</li>
+    <li>Assignments must be
+submitted in electronic form via WebCT. &nbsp;&nbsp;</li>
+    <li>Policy on lateness and
+other specific instructions will be specified on each assignment.
+&nbsp;</li>
+  </ul>
+  <br>
+  <li><span style="font-weight: bold;">Exams (midterm 15% + final 30% = 45 %)</span></li>
+</ul>
+<div style="margin-left: 40px;">The
+midterm will take place during a lecture slot and will be&nbsp;80
+minutes long.&nbsp; It will occur approximately midway through the
+semester and will cover approximately the first third of the lecture
+material. &nbsp; &nbsp;The Final Exam will take place during
+the Final Exam period and will cover the remainder of the lecture
+material.&nbsp;</div>
+<ul>
+  <ul>
+  </ul>
+  <li><span style="font-weight: bold;">Term
+Paper&nbsp; (15 %)</span></li>
+  <ul>
+    <li>The student must
+summarize three original
+research
+articles on
+a
+specific topic.  These articles must have appeared in one of
+the three main computer vision conferences, namely <a
+ href="http://www.cvpr2009.org/">CVPR</a>,
+ <a href="http://eccv2008.inrialpes.fr/">ECCV</a>,
+ <a href="http://www.iccv2009.org/">ICCV</a>.
+ (links are to most recent conference only).   At least
+one of these papers must be recent (since 2005).
+ The usual way to choose the three papers is to find
+one recent paper which uses or replaces techniques developed
+in two earlier papers. </li>
+
+        <li>Three potential articles must be chosen by the end of
+October.  Students should submit URL to these articles (no attachments
+please) along with a brief (say 100 word) description that justifies
+the choice of each article.  Feedback on the choice of articles will
+be given within one week of submission.  The choice of articles must
+be finalized by Friday Nov. 13.  
+        <li>A hard copy of the
+Term Paper is due on the last official lecture day.  
+Late submissions will be given a
+maximum grade of 10/15.   NOTE:  if the
+Final Exam is scheduled very early in the Final Exam period,
+ then this Term Paper deadline will be extended beyond the
+Final Exam period in order to give you time to study for the
+Final Exam.</li>
+<br> 
+<a name="Term-Paper-date-modified">
+<b> [ADDED Oct. 23, 2009] </a> <i>Because the Final Exam is being held
+early in the Final Exam period, I am extending the
+dates associated with the Term Paper as follows: Initial submission of
+URLs and justification of articles (FRI. NOV. 13), Finalization of 3
+articles (FRIDAY NOV. 27), Term Paper due (TUESDAY, DEC. 22 5
+pm).</i></b>
+</li>
+<br> <br> 
+
+    <li> Further specifications:
+      <ul>
+        <li>The submitted Term
+Paper must be
+between 1300 and 1500 words
+according to the UNIX/LINUX command <span
+ style="font-style: italic;">wc</span>. 
+The instructor will verify the word count.  If the word count
+is not between 1300-1500
+words,
+the student will be asked to resubmit and if the resubmission is beyond
+the due date then the late penalty will be applied (see
+below).  This
+word count does not include the Bibliography.</li>
+        <li>The Term Paper must be
+written in the student's own
+words.  It
+is forbidden to copy phrases or sentences directly from the
+articles unless the exact wording is crucial (for example, in a
+definition).  In this  case, quotation marks and a
+proper
+citation must be used.  See <span style="font-style: italic;">Student's
+Guide to
+Avoiding
+Plagarism</span> 
+mentioned below.   It is also considered bad style to
+paraphrase, and marks will be deducted if students merely re-ordered or
+slightly changed the author's wording.</li>
+        <li>Neither equations nor
+figures may be included in the
+Term
+Paper.  Instead  the equations and figures must be
+cited from the
+article being summarized.   e.g.  see Eq.
+(5) in
+reference [3].</li>
+        <li>The paper must be
+typeset -- either Latex or Word --
+and
+run through a spell checker. Marks will be taken off for
+spelling mistakes.</li>
+
+        <li>The student must
+submit:</li>
+        <ul>
+          <li>one hard copy of the
+Term Paper, including a
+Bibliography</li>
+          <li>one hard copy of
+each of the three articles being
+summarized</li>
+          <li>one electronic ASCII
+version of the Term Paper,
+which the instructor will use to determine the word count. 
+The electronic version
+must <span style="font-style: italic;">not</span>
+include the Bibliography.</li>
+        </ul>
+      </ul>
+    </li>
+    <li> The Grading Scheme for
+the term paper is as follows (15
+points total)
+      <ul>
+        <li>Organization (5
+points)</li>
+        <ul>
+          <li>The Term Paper must
+have a one paragraph
+Introduction
+outlining what the topic is.  The article summaries should
+then
+follow.  The key idea(s) of each article should be
+explained in simple terms, and references to
+particular equations and figures should be given to help the
+reader follow the summary.   Roughly equal weight should be
+given to the three articles.  Given the tight word
+constraints, a
+Conclusion section is optional and should only be included if it
+includes ideas that were not covered in the Introduction.</li>
+          <li>Possible ways of
+organizing the Term Paper include:</li>
+          <ul>
+            <li>the development of
+a particular computational
+method or
+theory </li>
+            <li>the development of
+one particular author's work</li>
+            <li>a comparison of
+different experimental or
+computational methods for solving a particular problem</li>
+          </ul>
+        </ul>
+        <li>Clarity/Readability (5
+points)</li>
+        <ul>
+          <li>The Instructor
+should be
+able
+to understand the main
+ideas of the summarized articles by reading only the Term
+Paper.  For details that are not  fully explained in
+the summaries, the Instructor should be able
+to easily index from the statements in the Term Paper to
+relevant
+locations in the articles.  For example, give pointers to
+page/paragraphs where ideas are elaborated. </li>
+        </ul>
+        <li>Choice of
+Detail  (5 points)</li>
+        <ul>
+          <li>Because the word
+count is severely limited, it is
+not possible to cover all the details in each
+article.  Students
+must therefore decide which details to include and which to leave
+out.  Students will be penalized
+for including details that are not central to the main ideas of the
+article(s).  </li>
+          <li>The paper should be
+written at a level appropriate
+for the instructor, as only he will read the paper.  The
+student
+should not re-explain concepts covered in class, nor explain standard
+methods
+that are used (but not introduced) by the authors.</li>
+        </ul>
+      </ul>
+    </li>
+  </ul>
+<br>
+<b> In accord with McGill University's Charter of Students' Rights,
+students in this course have the right to submit in English or in
+French any written work that is to be graded.
+</b>
+
+</ul>
+
+
+<big style="font-weight: bold;">Time
+Management (revised post hoc:  Dec. 14, 2009) <br>
+<br>
+</big>How much time should you plan on spending on this course?  <br><br>
+<i> If you are an undergraduate </i> and taking a 5 course load, then this
+course should take at least 20% of your time (probably around 25%).  
+I say "at least",
+because it is a 500 level course which is the highest level for ugrad
+courses.  I am <i> expecting </i> you are in U3 and you 
+will only take this course if you have done well in U1 and U2,
+in particular, in the prereq courses.  (If you have a weak background,
+then for sure you will need to do extra work to make up for it, and
+so it will take more than 20% of your time.)   I am also expecting
+that you are taking a mix of courses at different levels, including
+3xx and 4xx and maybe even 1xx and 2xx in other departments/faculties,
+and so this course will be a bit more challenging for you and will
+demand slightly more time.
+<br><br>
+
+<i> If you are an MSc graduate student, </i> you likely will be taking
+three courses and two of these courses will be 4 credits (not 3,
+like this one).   In terms of workload, your 11 credits of courses together
+will be the equivalent of just under four 5xx level courses (12
+credits).  I consider four 5xx courses to be equivalent in workload to a 
+five course load that is a mix of 2xx, 3xx, 4xx, and 5xx level
+courses.   
+<br><br>
+So let's assume you spend <i> at least </i> 20% of your time on this
+course.   The semester is 13 weeks long, plus 2 weeks
+for the Final Exam period (total 15 weeks).  
+I believe that <b> to get B grades, a typical McGill student 
+will need to work at least 40 hours per week over all
+  courses. </b>  (To get A grades, you will need to work more.)
+  Hence the total number of hours you
+should spend on this course is at least 120 hours (= 40 hours per week
+  * 15 weeks / 5 courses).   For this course, this 120 hours should break down roughly to:<br>
+<ul>
+  <li>40 hours for attending lectures </li>
+  <li>40 hours for reviewing lecture material to study for exams and
+   to review material needed to do the assignments. </li>
+  <li>10 hours for the Term Paper</li>
+  <li>10 hours for each of the three Assignments (30 total),  note:
+  this does <b> not </b> include the time needed to review lecture material
+  that the assigment is based on </li>
+</ul>
+<br>
+
+<big style="font-weight: bold;">Related Courses</big> <br> <br>
+MSc or PhD students who are interested in computer vision, graphics,
+robotics, or related areas are encouraged to concentrate their course
+choices in these areas.  Particularly relevant COMP courses are:
+<ul>
+  <li> COMP 557  Fundamentals of Computer Graphics (Fall 2009)</li>
+  <li> COMP 646  Machine Learning (Fall 2009)</li>
+  <li> COMP 599  Computer Animation (Winter 2010)</li>
+  <li> COMP 755  Mobile Robotics (Winter 2010)</li>
+  <li> COMP 766  Shape Analysis in Computer Vision (Winter 2010)</li>
+</ul>
+<big style="font-weight: bold;">Other
+useful Links</big>
+<menu><li><a href="http://www.cs.cmu.edu/%7Ecil/vision.html"> The
+Computer Vision Home Page </a>
+</li>
+<li><a
+ href="http://iris.usc.edu/Vision-Notes/bibliography/contents.html">
+Annotated Computer Vision Bibliography </a>
+</li>
+<li><a href="http://www.dai.ed.ac.uk/CVonline/"> CVonline
+Compendium of Computer Vision</a></li>
+</menu>
+
+
+<br><br>
+<big style="font-weight: bold;">
+Academic Integrity              
+</big>
+<br><br>
+McGill University values
+academic integrity. Therefore, all students
+must understand the meaning and consequences of cheating,
+plagiarism and other academic offenses
+under the Code of Student Conduct and Disciplinary Procedures.
+See <a href="http://www.mcgill.ca/students/srr/honest">
+here </a> for more information
+</div>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>COMP 558 Course Outline Fall 2018</title>
+</head>
+<body>
+<div style="text-align: center;">
+<big><big style="font-weight: bold;">Course Outline</big><br>
+<big style="font-weight: bold;">
+Fundamentals of Computer Vision &nbsp; &nbsp;
+&nbsp;COMP 558</big>
+
+<big><br> <span style="font-weight: bold;"> Fall 2018</span></big></big><br>
+</div>
+
+<br>
+<table style="text-align: left; width: 100%;" border="0" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+<big><span style="font-weight: bold;">Instructors</span></big><br>
+<br>
+      <td>
+Professor Michael Langer<br>
+Office:&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+McConnell Engineering, rm. 329<br>
+Tel:&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;514-398-3740<br>
+Email:&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; langer@cim.mcgill.ca<br>
+Office Hours: &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp; See mycourses Announcements.</td>
+<td style="vertical-align: top;">
+Professor Kaleem Siddiqi<br>
+Office:&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+McConnell Engineering, rm. 420<br>
+Tel:&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;514-398-3371<br>
+Email:&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; siddiqi@cim.mcgill.ca<br>
+Office Hours: &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;  Thursdays,  11-12,  McConnell 420</td>
+
+</td>
+    </tr>
+
+<tr><td><br><br>
+<big><span style="font-weight: bold;">Teaching Assistants</span></big><br><br>
+Pulkit Khandelwal:  &nbsp;&nbsp;pulkit.khandelwal@mail.mcgill.ca <br>
+Tabish Syed: &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; tabish.syed@mail.mcgill.ca <br>  
+Office Hours: &nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp; See mycourses Announcements.</td>
+    </tr>
+
+  </tbody>
+</table>
+<br>
+<big style="font-weight: bold;"><br>
+Official Course Description from McGill Calendar*<br>
+<br>
+</big>
+Biological vision, edge
+detection, projective geometry and camera
+modeling, shape from shading and texture, stereo vision, optical flow,
+motion analysis, object representation, object recognition, graph
+theoretic methods, high level vision, applications.<br>
+<br>
+ <i> *The course topics change from year to year.   Please see following list of lecture topics for what 
+we plan to cover in Fall 2018.</i>
+<br><br>
+<big style="font-weight: bold;">Overview<br> <br> </big>
+
+The course in Fall 2018 will consist of two parts.  The first part will address 2D Computer Vision.  
+We will look at fundamental methods for processing and representing image structure.  
+Topics will include edge and feature detection, and histogram descriptions 
+of image structure.  We will also show how these image representations are 
+used to solve fundamental 
+2D computer vision algorithms such as image motion analysis 
+and (time permitting) object recognition.
+The second part will address 3D Computer Vision.   
+We will examine projective mappings from 3D to 2D, and learn algorithms for inverted these
+mappings so that a vision system can infer the 3D structure from multiple 2D images.
+<br>
+<br>
+We will cover roughly one lecture for each of the bullets below.     <br>
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+<tr>
+<td>
+<h3> Lecture Schedule [Updated:  Oct. 23, 2018 ] </h3>
+<h4> Introduction  </h4>
+<ol start="1">
+<li>  Course overview [M &amp K]
+</ol>
+<h4> 2D Vision:  Image processing and representation </h4>
+<ol start="2">
+<li> RGB  [M] <br>
+<li> Image filtering [M]  <br>
+<li> Edge detection [M] <br>   
+<li> Least Squares Estimation: lines &amp vanishing points    [M]<br>
+<li> Robust Estimation:  Hough &amp RANSAC [M]<br>
+<li> Scale space (Gaussian) [K]<br>
+<li> Features 1: corners, intro to histograms [K]<br>
+<li> Features 2: histogram-based  (SIFT, HOG) [K]<br>
+<li> Features 3: learned features (CNN's) [K] <br>
+<li> Image Registration 1: translation (Lucas-Kanade) [K]<br>
+<li> Image Registration 2: affine  [K]<br>
+<li> Tracking: histogram-based [M]<br>
+
+
+</ol>
+
+
+</td> 
+
+<td>
+<h4> IN CLASS MIDTERM EXAM</h4>
+
+<h4> 3D Vision</h4> 
+<ol start="14">
+
+<li>Linear perspective, camera translation [K]<br>
+<li>Vanishing points, motion field for camera rotation [K]
+<li>finite camera rotation,  homogeneous coordinates [K]
+<li>Camera extrinsics and intrinsics [M]
+<li>Least Squares methods (eigenspaces, SVD) [M] 
+<li>Camera Calibration, Homographies 1: plane in 2 views [K] 
+<li>Homographies 2:  image stitching, rectification [K] 
+<li>Stereo and Epipolar Geometry [K]   
+<li>Stereo correspondence [M]   
+<li>Lighting and material [M]
+<li>Photography  [M]
+<li>RGBD Cameras & Point Clouds   [K]   
+</ol>
+</td>
+</tr>
+</table>
+
+<br>
+<big style="font-weight: bold;">Prerequisites</big><br>
+<br>
+The official prerequisites  according to 
+<a href="https://www.mcgill.ca/study/2018-2019/courses/comp-558">
+minerva </a>
+are COMP 206, COMP 360*, MATH 222, MATH 223.  <br>
+<br>
+Graduate students who did not do their undergraduate degree should consult the course descriptions
+to ensure they have adequate background.
+<br><br>
+
+The most important prequisites are the
+MATH courses. You need to be very comfortable with multivariable Calculus 
+(MATH 222) and linear algebra (MATH 223).
+<br>
+<br>
+*The COMP 360 prerequisite is unnecessary.   In terms of algorithms, 
+COMP 250 is probably enough.  COMP 251 would only be necessary if 
+we covered graph based methods.
+<br><br>
+
+<big style="font-weight: bold;">Course Materials</big><br>
+<br>
+The material covered in the lectures will be available in the form of
+Slides and Lecture Notes.<br><br>
+There is no required textbook for the course.  There are, however,
+several good texts out there and students are encouraged to consult
+with them.   
+<br>
+Here are links to a few good online books.
+<ul>
+<li>  Richard Szeliski, <a href="http://szeliski.org/Book">
+		      Computer Vision: Algorithms and Applications</a>
+<li>   Simon Prince,  <a href="http://www.computervisionmodels.com/">
+Computer Vision: Models, Learning, and Inference </a>  
+</ul>
+There are also textbooks available on reserve in the 
+Schulich Science and Engineering library.
+<ul>
+<li>''Introductory
+Techniques for
+3D Computer Vision'', by Emanuele Trucco and Alessandro Verri,
+Prentice-Hall, 1998. 
+</li>
+<li> ``Three-Dimensional Computer
+Vision: A Geometric Viewpoint'', by Olivier Faugeras, MIT Press, 1996.
+&nbsp;<b><font color="red"> </font></b>
+</li>
+<li> ``Computer Vision: A Modern
+Approach'', by David Forsyth and Jean Ponce, 2003.&nbsp;</li>
+</ul>
+There are also many online courses and videos available.  Here are a few which cover some of the topics of the course.   
+<ul>
+<li> Udacity's  
+<a href="https://www.udacity.com/course/introduction-to-computer-vision--ud810">
+course by Aaron Bobick</a> 
+<li> Youtube   
+<a href="https://www.youtube.com/playlist?list=PLmyoWnoyCKo8epWKGHAm4m_SyzoYhslk5">
+videos </a> by Prof. Mubarak Shah at UCF
+
+</ul>
+
+<big><span style="font-weight: bold;">Evaluation</span></big><br>
+<ul>
+<li>
+Four Assignments (40% = 4 x 10%)</li>
+  <ul>
+    <li>The assignments will involve writing MATLAB programs, answering questions related
+to the lecture material, and possibly reading research articles and answering questions about them.  <br> For the programming part,
+      students are not required to know about MATLAB prior to the course.  </li>
+    <li>Assignments must be submitted in electronic form via mycourses</li>
+    <li>Policy on lateness and other specific instructions will be specified on each assignment.
+&nbsp;</li>
+</ul>
+<li>
+Exams 
+<ul>
+<li>  midterm 20%, which will take place in the Tuesday, Oct. 16 lecture slot
+<li>  final exam 40%, which will take place during the final exam period </ul>
+The exams will both be closed book.
+</ul>
+</ul>
+<i> In accord with McGill University's Charter of Students' Rights,
+students in this course have the right to submit in English or in
+French any written work that is to be graded.
+</i>
+<br> <br><br>
+<big style="font-weight: bold;">
+Academic Integrity              
+</big>
+<br><br>
+McGill University values
+academic integrity. Therefore, all students
+must understand the meaning and consequences of cheating,
+plagiarism and other academic offenses
+under the Code of Student Conduct and Disciplinary Procedures.
+See <a href="http://www.mcgill.ca/students/srr/honest">
+here </a> for more information
+</div>
+</body>
+</html>

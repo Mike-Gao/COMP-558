@@ -1,15 +1,59 @@
-im = imread("demo.jpg")
+im = imread("demosaicing.png");
 
-Rcfa = repmat([1 0;0 0], size(im)/2);
-Gcfa = repmat([0 1;1 0], size(im)/2);
-Bcfa = repmat([0 0;0 1], size(im)/2);
+row = size(im,1);
+col = size(im,2);
 
-Rh = im.*Rcfa
-Gh = im.*Gcfa
-Bh = im.*Bcfa
+%initialiating R, G and B channels
+R = zeros(row, col);
+G = zeros(row, col);
+B = zeros(row, col);
 
-R = conv2(Rh,[1 2 1;2 4 2;1 2 1]/4, 'same');
-G = conv2(Gh,[0 1 0;1 4 1;0 1 0]/4, 'same');
-B = conv2(Bh,[1 2 1;2 4 2;1 2 1]/4, 'same');
+% fill red
+i = 2:2:row;
+j = 1:2:col;
+R(i,j) = im(i,j,1);
+red = uint8(cat(3, R, zeros(row, col), zeros(row,col)));
+subplot(1,5,1);
+image(red);
+title("red");
 
-output(:,:,1)=R; output(:,:,2)=G; output(:,:,3)=B;
+
+% fill green
+i = 1:2:row;
+j = 1:2:col;
+G(i,j) = im(i,j,2);
+i = 2:2:row;
+j = 2:2:col;
+G(i,j) = im(i,j,2);
+green = uint8(cat(3, zeros(row, col), G, zeros(row,col)));
+subplot(1,5,2);
+image(green);
+title("green");
+
+
+% fill blue
+i = 2:2:row;
+j = 1:2:col;
+B(i,j) = im(i,j,3);
+blue = uint8(cat(3, zeros(row, col), zeros(row,col), B));
+subplot(1,5,3);
+image(blue);
+title("blue");
+
+
+R = conv2(R,[1 2 1;2 4 2;1 2 1]/4, 'same');
+G = conv2(G,[0 1 0;1 4 1;0 1 0]/4, 'same');
+B = conv2(B,[1 2 1;2 4 2;1 2 1]/4, 'same');
+
+
+output = cat(3, R, G, B);
+output=uint8(output);
+subplot(1,5,4);
+image(output);
+title("output");
+subplot(1,5,5);
+image(im);
+title("origional");
+
+
+

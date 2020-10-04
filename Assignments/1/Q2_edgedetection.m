@@ -1,29 +1,57 @@
-%% 
-% Read in the image, convert to grayscale, and detect edges.
-% Creates an array edges where each row is    (x, y, cos theta, sin theta)   
+rect = ones(500,500) * 256;
+for i=1:150
+    p1=[randi([1,500],1),randi([1,500],1)];
+    height = randi(150,1);
+    p2=[p1+height,p1(2)];
+    width = randi(150,1);
+    p3=[p1(1),p1(2)+width];
+    intensity=randi([0,250],1);
+    smallrec=intensity*ones(height,width);
+    rect(p1(1):p2(1)-1,p1(2):p3(2)-1) = smallrec;
+end
+rect = uint8(rect(125:375,125:375));
+figure(1);
+imshow(rect);
 
-%im = imread("...");
-%im = imresize(rgb2gray(im), 0.5);
+Gaussian = fspecial('gaussian',20,3);
+x=conv2(Gaussian, [1 -2 1], 'same');
+y=conv2(Gaussian, [1 -2 1]', 'same');
+Laplace = x + y;
+figure(2);
+imshow(Laplace, 'DisplayRange', [-0.003 0.001], 'InitialMagnification', 1000);
+colorbar
 
-Iedges = edge(im,'canny');
-%  imgradient computes the gradient magnitude and gradient direction
-%  using the Sobel filter.  
-[~,grad_dir]=imgradient(im);
-%  imgradient defines the gradient direction as an angle in degrees
-%  with a positive angle going (CCW) from positive x axis toward
-%  negative y axis.   However, the (cos theta, sin theta) formulas from the lectures define theta
-%  positive to mean from positive x axis to positive y axis.  For this
-%  reason,  I will flip the grad_dir variable:
-grad_dir = - grad_dir;
 
-imshow(Iedges)
+figure(3);
+ZeroCrossingImg = CreateZeroCrossingImage(rect,20,3);
+imshow(ZeroCrossingImg);
 
-%Now find all the edge locations, and add their orientations (cos theta,sin theta). 
-%  row, col is  y,x
-[row, col] = find(Iedges);
-% Each edge is a 4-tuple:   (x, y, cos theta, sin theta)   
-edges = [col, row, zeros(length(row),1), zeros(length(row),1) ];
-for k = 1:length(row)
-     edges(k,3) = cos(grad_dir(row(k),col(k))/180.0*pi);
-     edges(k,4) = sin(grad_dir(row(k),col(k))/180.0*pi);
+figure(4);
+NoisyRect = rect+uint8(0.1*std(double(rect(:)))*randn(size(rect)));
+imshow(NoisyRect);
+
+figure(5)
+NoisyZeroCrossingImg = CreateZeroCrossingImage(NoisyRect,20,3);
+imshow(NoisyZeroCrossingImg);
+
+figure(6)
+NewNoisyZeroCrossingImg = CreateZeroCrossingImage(NoisyRect,40,6);
+imshow(NewNoisyZeroCrossingImg);
+
+
+function img = CreateZeroCrossingImage(Img,Width,Stddev)
+    Gaussian = fspecial('gaussian', Width, Stddev);
+    x=conv2(Gaussian, [1 -2 1], 'same');
+    y=conv2(Gaussian, [1 -2 1]', 'same');
+    Laplace = x+y;
+    LaplaceImg = conv2(Img, Laplace,'same');
+    ShiftLeft=(circshift(LaplaceImg,[0 -1]) .* LaplaceImg)<0;
+    ShiftRight=(circshift(LaplaceImg,[0 1]) .* LaplaceImg)<0;
+    ShiftUp=(circshift(LaplaceImg,[1 0]) .* LaplaceImg)<0;
+    ShiftDown=(circshift(LaplaceImg,[-1 0]) .* LaplaceImg)<0;
+    ShiftTopLeft=(circshift(LaplaceImg,[1 -1]) .* LaplaceImg)<0;
+    ShiftTopRight=(circshift(LaplaceImg,[1 1]) .* LaplaceImg)<0;
+    ShiftBottomLeft=(circshift(LaplaceImg,[-1 -1]) .* LaplaceImg)<0;
+    ShiftBottomRight=(circshift(LaplaceImg,[-1 1]) .* LaplaceImg)<0;
+    img = ShiftLeft+ShiftRight+ShiftUp+ShiftDown+ShiftTopLeft+ShiftTopRight+ShiftBottomLeft+ShiftBottomRight;
 end

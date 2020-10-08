@@ -2,7 +2,7 @@
 % Read in the image, convert to grayscale, and detect edges.
 % Creates an array edges where each row is    (x, y, cos theta, sin theta)   
 
-im = imread("vanishing_point.jpg");
+im = imread("vanishing_point_demo.png");
 im = imresize(rgb2gray(im), 0.5);
 
 Iedges = edge(im,'canny');

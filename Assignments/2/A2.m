@@ -65,9 +65,84 @@ for i = 1:16
 end
 
 
-% Q4: local extrema
+% Q4: SIFT Keypoint detection
 figure
-getpts(i)
+imagesc(im_syn);
+colormap(gray);
+keypts_syn = getkeypts(dog_syn);
+for i=1:size(keypts_syn,1)
+     viscircles([keypts_syn(i,1), keypts_syn(i,2)], getsig(keypts_syn(i,3)));
+end
+
+% figure
+% imagesc(im_nat);
+% colormap(gray);
+% keypts_nat = getkeypts(dog_nat);
+% for i=1:size(keypts_nat,1)
+%      viscircles([keypts_nat(i,1), keypts_nat(i,2)], keypts_nat(i,3));
+% end
+
+% Q5: Hessian constraint
+figure
+imagesc(im_syn);
+colormap(gray);
+xfilter = [1 0 -1; 1 0 -1; 1 0 -1]/6;
+yfilter = [1 0 -1; 1 0 -1; 1 0 -1]'/6;
+r = 10;
+threshold = (r+1)^2/r;
+keypoints = keypts_syn;
+keypoints_new = zeros(length(keypoints),4);
+cur = 1;
+for i = 1:size(keypoints,1)
+    x = keypoints(i,1);
+    y = keypoints(i,2);
+    l = keypoints(i,3);
+    neighbors = dog_syn(y-2:y+2, x-2:x+2, l);
+    dx = conv2(neighbors,xfilter,'valid');
+    dy = conv2(neighbors,yfilter,'valid');
+    dxx = conv2(dx, xfilter, 'valid');
+    dyy = conv2(dy, yfilter, 'valid');
+    dxy = conv2(dy, yfilter, 'valid');
+    hessian = [dxx, dxy; dxy, dyy];
+    if (trace(hessian)^2/det(hessian) < threshold && det(hessian) > 0)
+        keypoints_new(cur,:) = keypoints(i,:);
+        cur = cur + 1;
+        viscircles([x, y], getsig(l), 'Color','r');
+    else
+        viscircles([x, y], getsig(l), 'Color','b');
+    end
+end
+
+
+% figure
+% imagesc(im_nat);
+% colormap(gray);
+% xfilter = [1 0 -1; 1 0 -1; 1 0 -1]/6;
+% yfilter = [1 0 -1; 1 0 -1; 1 0 -1]'/6;
+% r = 10;
+% threshold = (r+1)^2/r;
+% keypoints = keypts_nat;
+% keypoints_new = zeros(length(keypoints),4);
+% cur = 1;
+% for i = 1:size(keypoints,1)
+%     x = keypoints(i,1);
+%     y = keypoints(i,2);
+%     l = keypoints(i,3);
+%     neighbors = dog_syn(y-2:y+2, x-2:x+2, l);
+%     dx = conv2(neighbors,xfilter,'valid');
+%     dy = conv2(neighbors,yfilter,'valid');
+%     dxx = conv2(dx, xfilter, 'valid');
+%     dyy = conv2(dy, yfilter, 'valid');
+%     dxy = conv2(dy, yfilter, 'valid');
+%     hessian = [dxx, dxy; dxy, dyy];
+%     if (trace(hessian)^2/det(hessian) < threshold && det(hessian) > 0)
+%         keypoints_new(cur,:) = keypoints(i,:);
+%         cur = cur + 1;
+%         viscircles([x, y], getsig(l), 'Color','r');
+%     else
+%         viscircles([x, y], getsig(l), 'Color','b');
+%     end
+% end
 
 
 % Helper functions                     
@@ -120,8 +195,8 @@ end
 function pts = getkeypts(dog)
 h = size(dog, 1);
 w = size(dog, 2);
-lim = 50;
-pts = zeros(100000,4);
+lim = 20;
+pts = zeros(200,4);
 cur = 1;
 for i = 2:15
     sig = getsig(i);
@@ -129,16 +204,17 @@ for i = 2:15
     for x = offset: w - offset
         for y = offset: h - offset
                if abs(dog(y,x,i)) > lim
-                   neighbors = dog(y-1:y+1,x-1:x+1,i-1,i+1);
-                   max = max(neighbors, [], 'all');
-                   min = min(neighbors, [], 'all');
-                   if (dog(y,x,i) == max || dog(y,x,i) == min)
-                       pts(cur,1:3) = [x y sig];
+                   neighbors = dog(y-1:y:y+1,x-1:x:x+1,i-1:i+1);
+                   max_neighbor = max(neighbors, [], 'all');
+                   min_neighbor = min(neighbors, [], 'all');
+                   if (dog(y,x,i) == max_neighbor || dog(y,x,i) == min_neighbor)
+                       pts(cur,1:3) = [x y i];
                        cur = cur + 1;
                    end
                end
         end
     end
+end
 end
 
 function plotimage(im,map,t)

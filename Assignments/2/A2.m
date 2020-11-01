@@ -1,7 +1,8 @@
 % Load Image %
 im_syn = rgb2gray(imread('synthetic.jpg'));
 im_nat = rgb2gray(imread('mtl.jpg'));
-
+% Q7 - resized image
+% im_syn = rgb2gray(imresize(imread('synthetic.jpg'),0.8));
 gss_syn = getgss(im_syn);
 gss_nat = getgss(im_nat);
 
@@ -112,6 +113,7 @@ for i = 1:size(keypoints,1)
         viscircles([x, y], getsig(l), 'Color','b');
     end
 end
+keypts_syn = keypoints_new(1:cur-1,:);
 
 
 % figure
@@ -128,7 +130,7 @@ end
 %     x = keypoints(i,1);
 %     y = keypoints(i,2);
 %     l = keypoints(i,3);
-%     neighbors = dog_syn(y-2:y+2, x-2:x+2, l);
+%     neighbors = dog_nat(y-2:y+2, x-2:x+2, l);
 %     dx = conv2(neighbors,xfilter,'valid');
 %     dy = conv2(neighbors,yfilter,'valid');
 %     dxx = conv2(dx, xfilter, 'valid');
@@ -143,6 +145,52 @@ end
 %         viscircles([x, y], getsig(l), 'Color','b');
 %     end
 % end
+
+% Q6: SIFT feature dominant orientation
+figure;
+imagesc(im_syn);
+colormap(gray);
+binhists = zeros(300, 36);
+sift_feature_dominant = zeros(1000,4);
+keypoints = keypts_syn;
+for i = 1:size(keypoints,1)
+    x = keypoints(i,1);
+    y = keypoints(i,2);
+    l = keypoints(i,3);
+    sig_round = round(getsig(l));
+    neighbors = gss_syn(x-sig_round-1:x+sig_round+1, y-sig_round-1:y+sig_round+1,l);
+    dx = conv2(neighbors,xfilter,'valid');
+    dy = conv2(neighbors,yfilter,'valid');
+    mag = sqrt(dx.*dx + dy.*dy);
+    gauss = fspecial('gaussian', floor(2*getsig(l)), 1.5*getsig(l));
+    mag_weighted = mag .* gauss;
+    dir = atan2d(-dx, dy);
+    dir(dir<0) = dir(dir<0) + 360;
+    bin = round(dir/10) + 1;
+    bin(bin==37) = 1;
+    bin_hist = zeros(1,36);
+    for j = 1:size(mag_weighted,1)
+        bin_hist(bin(j)) = bin_hist(bin(j)) + mag_weighted(j);
+    end
+    binhists(pts,:) = bin_hist;
+    pos = pos + 1;
+    large_vals = binhist( binhist > 0.8 * max(binhist) )';
+    for k=1:length(large_vals)
+        idx = find(binhist == larges(k));
+        ang = (idx-1)*10;
+        sift_feature_dominant(cur,:) = [x y l ang];
+        cur = cur + 1;
+        delta_x = 2*getsig(l)*cos(-deg2rad(ang));
+        delta_y = 2*getsig(l)*sin(-deg2rad(ang));
+        line([y y+delta_y], [x x+delta_x],'Color', 'r', 'LineWidth',2);
+    end
+end
+
+    
+% Q7 - Scale Invariance
+% Change im_syn to rgb2gray(imresize(imread('synthetic.jpg'),0.8)), see
+% above.
+
 
 
 % Helper functions                     
@@ -196,7 +244,7 @@ function pts = getkeypts(dog)
 h = size(dog, 1);
 w = size(dog, 2);
 lim = 20;
-pts = zeros(200,4);
+pts = zeros(10000,4);
 cur = 1;
 for i = 2:15
     sig = getsig(i);
@@ -215,6 +263,7 @@ for i = 2:15
         end
     end
 end
+pts = pts(pts(:,3) ~= 0,:); 
 end
 
 function plotimage(im,map,t)

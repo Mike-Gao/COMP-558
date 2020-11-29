@@ -76,7 +76,7 @@ for i = 1:num_lines
     in_2(i,:)= inliers_2.Location(i,:);
     
     L1(i,:) = [inliers_2.Location(i,:), 1] * F;
-    L2(i,:) = F * [inliers_1.Location(i,:), 1]';
+    L2(i,:) = F * ([inliers_1.Location(i,:), 1]');
     epi_line_start_1(i, :) = [0, -L1(i,3)/L1(i,2), 1];
     epi_line_end_1(i, :) = [size(im_1,2), -size(im_1,2)*L1(i,1)-L1(i,3)/L1(i,2), 1];
     epi_line_start_2(i, :) = [0, -L2(i,3)/L2(i,2), 1];
@@ -90,12 +90,12 @@ epipole_1 = V1(:,end);
 epipole_1_divided_by_w = [epipole_1(1)/epipole_1(3), epipole_1(2)/epipole_1(3)];
 
 epipole_2 = V2(:,end);
-epipole_2_divided_by_w = [epipole_2(1)/epipole_2(3), epipole_1(2)/epipole_2(3)];
+epipole_2_divided_by_w = [epipole_2(1)/epipole_2(3), epipole_2(2)/epipole_2(3)];
 
 
 figure;
 imshow(im_1);
-title("Epipole in Image 1 is x= " + epipole_2_divided_by_w(1) + " y = " + epipole_2_divided_by_w(2));
+title("Epipole in Image 1 is x= " + epipole_1_divided_by_w(1) + " y = " + epipole_2_divided_by_w(2));
 
 % limit to the line print out to 10
 line_lim = 10;

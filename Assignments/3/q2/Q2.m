@@ -6,13 +6,13 @@ im_1 = rgb2gray(im_1);
 im_2 = imread('bookshelf2.jpg');
 im_2 = rgb2gray(im_2);
 
-figure;
-subplot(1,2,1);
-imshow(im_1);
+figure(1)
+subplot(1,2,1)
+imshow(im_1)
 title("Image 1");
-
-subplot(1,2,2); 
-imshow(im_2);
+figure(1)
+subplot(1,2,2) 
+imshow(im_2)
 title("Image 2");
 
 %% SURF
@@ -36,9 +36,9 @@ matched_2 = valid_pts_2(indexPairs(:,2));
 inliers_1 = matched_1(inliersIndex, :);
 inliers_2 = matched_2(inliersIndex, :);
 
-figure;
-showMatchedFeatures(im_1, im_2, inliers_1, inliers_2, 'montage');
-title('Inlier Point Matches');
+figure(2)
+showMatchedFeatures(im_1, im_2, inliers_1, inliers_2, 'montage')
+title('Inlier Point Matches')
 
 %% Estimate uncalibrated rectification
 
@@ -46,19 +46,20 @@ title('Inlier Point Matches');
 
 [im_1_rectified, im_2_rectified] = rectifyStereoImages(im_1, im_2, T1, T2);
 
-figure;
-imshow(stereoAnaglyph(im_1_rectified, im_2_rectified));
-title('Rectified Image');
+figure(3)
+imshow(stereoAnaglyph(im_1_rectified, im_2_rectified))
+title('Rectified Image')
 
 %% Disparity
 
 disparityMap = disparitySGM(im_1_rectified, im_2_rectified, 'DisparityRange', [-56 56], 'UniquenessThreshold', 6);
 
-figure;
-imshow(disparityMap, [-56 56]);
-title('Disparity Map');
-colormap jet;
-colorbar;
+figure(4)
+imshow(disparityMap, [-56 56])
+title('Disparity Map')
+figure(4)
+colormap jet
+colorbar
 
 %% Epipole
 
@@ -71,16 +72,16 @@ epi_line_end_1 = zeros(num_lines, 3);
 epi_line_end_2 = zeros(num_lines, 3);
 in_1 = zeros(num_lines, 2);
 in_2 = zeros(num_lines, 2);
-for i = 1:num_lines
+for i=1:num_lines
     in_1(i,:)= inliers_1.Location(i,:);
     in_2(i,:)= inliers_2.Location(i,:);
     
     L1(i,:) = [inliers_2.Location(i,:), 1] * F;
     L2(i,:) = F * ([inliers_1.Location(i,:), 1]');
     epi_line_start_1(i, :) = [0, -L1(i,3)/L1(i,2), 1];
-    epi_line_end_1(i, :) = [size(im_1,2), -size(im_1,2)*L1(i,1)-L1(i,3)/L1(i,2), 1];
+    epi_line_end_1(i, :) = [size(im_1,2), (-size(im_1,2)*L1(i,1)-L1(i,3))/L1(i,2), 1];
     epi_line_start_2(i, :) = [0, -L2(i,3)/L2(i,2), 1];
-    epi_line_end_2(i, :) = [size(im_2,2), -size(im_2,2)*L2(i,1)-L2(i,3)/L2(i,2), 1];
+    epi_line_end_2(i, :) = [size(im_2,2), (-size(im_2,2)*L2(i,1)-L2(i,3))/L2(i,2), 1];
 end
 
 [~, ~, V1] = svd(L1);
@@ -93,9 +94,10 @@ epipole_2 = V2(:,end);
 epipole_2_divided_by_w = [epipole_2(1)/epipole_2(3), epipole_2(2)/epipole_2(3)];
 
 
-figure;
-imshow(im_1);
-title("Epipole in Image 1 is x= " + epipole_1_divided_by_w(1) + " y = " + epipole_2_divided_by_w(2));
+figure(5)
+imshow(im_1)
+figure(5)
+title("Epipole in Image 1 is x= " + epipole_1_divided_by_w(1) + " y = " + epipole_2_divided_by_w(2))
 
 % limit to the line print out to 10
 line_lim = 10;
@@ -108,9 +110,10 @@ for i=1:line_lim
 end
 
 
-figure;
-imshow(im_2);
-title("Epipole in Image 2 is x= " + epipole_2_divided_by_w(1) + " y = " + epipole_2_divided_by_w(2));
+figure(6)
+imshow(im_2)
+figure(6)
+title("Epipole in Image 2 is x= " + epipole_2_divided_by_w(1) + " y = " + epipole_2_divided_by_w(2))
 
 for i=1:line_lim
     viscircles(in_2(i,:), 10, 'Color', color(i,:));

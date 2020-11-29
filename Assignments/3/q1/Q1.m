@@ -1,9 +1,9 @@
 %% read images
-pic_1 = imread('yard1.jpg');
+pic_1 = imread('room1.jpg');
 pic_1 = rgb2gray(pic_1);
 imshow(pic_1);
 
-pic_2 = imread('yard2.jpg');
+pic_2 = imread('room2.jpg');
 pic_2 = rgb2gray(pic_2);
 
 

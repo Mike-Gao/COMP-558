@@ -1,9 +1,9 @@
 %% Loading Images
 
-im_1 = imread('bookshelf1.jpg');
+im_1 = imread('custom.jpeg');
 im_1 = rgb2gray(im_1);
 
-im_2 = imread('bookshelf2.jpg');
+im_2 = imread('custom2.jpeg');
 im_2 = rgb2gray(im_2);
 
 figure(1)
@@ -52,10 +52,10 @@ title('Rectified Image')
 
 %% Disparity
 
-disparityMap = disparitySGM(im_1_rectified, im_2_rectified, 'DisparityRange', [-56 56], 'UniquenessThreshold', 6);
+disparityMap = disparitySGM(im_1_rectified, im_2_rectified, 'DisparityRange', [-48 48], 'UniquenessThreshold', 6);
 
 figure(4)
-imshow(disparityMap, [-56 56])
+imshow(disparityMap, [-48 48])
 title('Disparity Map')
 figure(4)
 colormap jet
